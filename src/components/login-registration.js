@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import { Create_Login_User_Action } from "../actions/User_Actions";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
   handleSubmit = (e) => {
@@ -16,7 +15,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <Link to="/userInformation">Next</Link>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="password">userName</label>
           <input type="text" id="userName" defaultValue={this.props.userName} />

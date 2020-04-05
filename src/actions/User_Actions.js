@@ -1,9 +1,4 @@
-import {
-  Create_Login_User,
-  Update_User,
-  //   Update_Terms_User,
-  //   Update_Welcome_User,
-} from "./types";
+import { Create_Login_User, Update_User, Change_Page } from "./types";
 import axios from "axios";
 
 export const Create_Login_User_Action = ({ userName, password }) => {
@@ -51,5 +46,15 @@ export const Update_User_Action = (inputs) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+};
+export const Change_Page_Action = (input) => {
+  return (dispatch) => {
+    dispatch({
+      type: Change_Page,
+      payload: {
+        ...input,
+      },
+    });
   };
 };

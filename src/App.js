@@ -1,25 +1,28 @@
 import React from "react";
 import Login from "./components/login-registration";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserInformation from "./components/userInformation";
 import Terms from "./components/termsAndConditions";
 import Welcome from "./components/welcome";
+import { connect } from "react-redux";
 
-function App() {
+function App(props) {
   return (
     <div className="App">
       <main>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/" component={Login} exact />
-            <Route path="/userInformation" component={UserInformation} />
-            <Route path="/terms" component={Terms} />
-            <Route path="/welcome" component={Welcome} />
-          </Switch>
-        </BrowserRouter>
+        {console.log(props)}
+        {props.showEmailPhoneScreen ||
+          props.showTermsAndCondition ||
+          props.showWelcomeScreen || <Login />}
+        {props.showEmailPhoneScreen && <UserInformation />}
+        {props.showTermsAndCondition && <Terms />}
+        {props.showWelcomeScreen && <Welcome />}
       </main>
     </div>
   );
 }
-
-export default App;
+export default connect((state) => ({
+  showEmailPhoneScreen: state.showEmailPhoneScreen,
+  showTermsAndCondition: state.showTermsAndCondition,
+  showWelcomeScreen: state.showWelcomeScreen,
+}))(App);

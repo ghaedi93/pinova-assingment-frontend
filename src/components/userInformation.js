@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { Update_User_Action } from "../actions/User_Actions";
 
 class UserInformation extends Component {
@@ -29,8 +28,6 @@ class UserInformation extends Component {
   render() {
     return (
       <div>
-        <Link to="/terms">Next</Link>
-        <Link to="/">back</Link>
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">email</label>
           <input type="text" id="email" defaultValue={this.props.email} />
