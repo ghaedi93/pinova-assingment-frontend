@@ -1,4 +1,4 @@
-import { Create_Login_User, Update_User, Change_Page } from "./types";
+import { Create_Login_User, Update_User, Logout } from "./types";
 import axios from "axios";
 
 export const Create_Login_User_Action = ({ userName, password }) => {
@@ -48,13 +48,10 @@ export const Update_User_Action = (inputs) => {
       });
   };
 };
-export const Change_Page_Action = (input) => {
+export const Logout_Action = () => {
   return (dispatch) => {
     dispatch({
-      type: Change_Page,
-      payload: {
-        ...input,
-      },
+      type: Logout,
     });
   };
 };

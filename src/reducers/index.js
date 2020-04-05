@@ -1,4 +1,4 @@
-import { Create_Login_User, Update_User, Change_Page } from "../actions/types";
+import { Create_Login_User, Update_User, Logout } from "../actions/types";
 
 const initialState = {
   _id: "",
@@ -28,11 +28,8 @@ export default function userReducers(state = initialState, action) {
         ...state,
         ...action.payload,
       };
-    case Change_Page:
-      return {
-        ...state,
-        ...action.payload,
-      };
+    case Logout:
+      return {};
     default:
       return state;
   }
