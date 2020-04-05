@@ -1,59 +1,42 @@
 import { connect } from "react-redux";
 import { Create_Login_User_Action } from "../actions/User_Actions";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      password: "",
-      userName: "",
-    };
-  }
-  setUname = (e) => {
-    const userName = e.target.value;
-    this.setState({
-      ...this.state,
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const userName = document.getElementById("userName").value;
+    const password = document.getElementById("password").value;
+    this.props.Create_Login_User_Action({
       userName,
-    });
-  };
-  setPassword = (e) => {
-    const password = e.target.value;
-    this.setState({
-      ...this.state,
       password,
     });
   };
-  handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("submitted", this.state);
-    this.props.Create_Login_User_Action(this.state);
-  };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <div>
+        <Link to="/userInformation">Next</Link>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="password">userName</label>
-          <input
-            onChange={this.setUname}
-            type="text"
-            id="userName"
-            // value={userName}
-            // onChange={this.handleChange}
-          />
+          <input type="text" id="userName" defaultValue={this.props.userName} />
           <label htmlFor="password">password</label>
           <input
-            onChange={this.setPassword}
             type="password"
             id="password"
-            // value={password}
-            // onChange={this.handleChange}
+            defaultValue={this.props.password}
           />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     );
   }
 }
 
-export default connect(null, { Create_Login_User_Action })(Login);
+export default connect(
+  (state) => ({
+    userName: state.userName,
+    password: state.password,
+  }),
+  { Create_Login_User_Action }
+)(Login);

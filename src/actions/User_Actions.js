@@ -1,6 +1,6 @@
 import {
   Create_Login_User,
-  //   Update_Info_User,
+  Update_User,
   //   Update_Terms_User,
   //   Update_Welcome_User,
 } from "./types";
@@ -18,6 +18,31 @@ export const Create_Login_User_Action = ({ userName, password }) => {
         console.log("retrieved data-actionCreator", res.data);
         dispatch({
           type: Create_Login_User,
+          payload: {
+            ...res.data,
+          },
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+};
+
+export const Update_User_Action = (inputs) => {
+  return async (dispatch, getState) => {
+    const previousState = getState();
+    console.log("Previous state", { ...previousState });
+    console.log("inputs", { ...inputs });
+    await axios
+      .put(`http://localhost:3000/user`, {
+        ...previousState,
+        ...inputs,
+      })
+      .then((res) => {
+        console.log("retrieved data-actionCreator", res.data);
+        dispatch({
+          type: Update_User,
           payload: {
             ...res.data,
           },

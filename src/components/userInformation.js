@@ -1,82 +1,70 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { Update_User_Action } from "../actions/User_Actions";
 
 class UserInformation extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: "",
-      countryCode: "",
-      phoneNumber: "",
-      acceptMarketing: false,
-    };
-  }
-  setEmail = (e) => {
-    const email = e.target.value;
-    this.setState({
-      ...this.state,
-      email,
-    });
-  };
-  setCountryCode = (e) => {
-    const countryCode = e.target.value;
-    this.setState({
-      ...this.state,
-      countryCode,
-    });
-  };
-  setPhoneNumber = (e) => {
-    const phoneNumber = e.target.value;
-    this.setState({
-      ...this.state,
-      phoneNumber,
-    });
-  };
-  setAcceptMarketing = (e) => {
-    const acceptMarketing = e.target.checked;
-    this.setState({
-      ...this.state,
-      acceptMarketing,
-    });
-  };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    const email = document.getElementById("email").value;
+    const countryCode = document.getElementById("countryCode").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const acceptMarketing = document.getElementById("acceptMarketing").checked;
+    console.log("is sending", {
+      email,
+      countryCode,
+      phoneNumber,
+      acceptMarketing,
+    });
+    this.props.Update_User_Action({
+      email,
+      countryCode,
+      phoneNumber,
+      acceptMarketing,
+      showEmailPhoneScreen: false,
+      showTermsAndCondition: true,
+      showWelcomeScreen: false,
+    });
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <div>
+        <Link to="/terms">Next</Link>
+        <Link to="/">back</Link>
+        <form onSubmit={this.handleSubmit}>
           <label htmlFor="title">email</label>
-          <input
-            type="text"
-            id="email"
-            // value={userName}
-            onChange={this.setEmail}
-          />
+          <input type="text" id="email" defaultValue={this.props.email} />
           <label htmlFor="title">countryCode</label>
           <input
             type="text"
             id="countryCode"
-            // value={password}
-            onChange={this.setCountryCode}
+            defaultValue={this.props.countryCode}
           />
+
           <label htmlFor="title">phoneNumber</label>
           <input
             type="text"
             id="phoneNumber"
-            // value={password}
-            onChange={this.setPhoneNumber}
+            defaultValue={this.props.phoneNumber}
           />
           <p>do you agree to getting ads ?</p>
           <input
             type="checkbox"
             id="acceptMarketing"
-            onChange={this.setAcceptMarketing}
+            defaultChecked={this.props.acceptMarketing}
           />
-        </div>
-        <button type="submit">continue</button>
-      </form>
+          <button type="submit">continue</button>
+        </form>
+      </div>
     );
   }
 }
-export default UserInformation;
+export default connect(
+  (state) => ({
+    email: state.email,
+    countryCode: state.countryCode,
+    phoneNumber: state.phoneNumber,
+    acceptMarketing: state.acceptMarketing,
+  }),
+  { Update_User_Action }
+)(UserInformation);

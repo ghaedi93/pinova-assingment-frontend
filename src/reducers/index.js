@@ -1,9 +1,4 @@
-import {
-  Create_Login_User,
-  Update_Info_User,
-  Update_Terms_User,
-  Update_Welcome_User,
-} from "../actions/types";
+import { Create_Login_User, Update_User } from "../actions/types";
 
 const initialState = {
   _id: "",
@@ -28,17 +23,7 @@ export default function userReducers(state = initialState, action) {
         ...state,
         ...action.payload,
       };
-    case Update_Info_User:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case Update_Terms_User:
-      return {
-        ...state,
-        ...action.payload,
-      };
-    case Update_Welcome_User:
+    case Update_User:
       return {
         ...state,
         ...action.payload,
