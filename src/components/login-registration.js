@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+import { Create_Login_User_Action } from "../actions/User_Actions";
 import React, { Component } from "react";
 
 class Login extends Component {
@@ -14,7 +16,6 @@ class Login extends Component {
       ...this.state,
       userName,
     });
-    console.log("changed Userame", userName);
   };
   setPassword = (e) => {
     const password = e.target.value;
@@ -22,11 +23,11 @@ class Login extends Component {
       ...this.state,
       password,
     });
-    console.log("changed pass", password);
   };
   handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitted", this.state);
+    this.props.Create_Login_User_Action(this.state);
   };
   render() {
     return (
@@ -54,4 +55,5 @@ class Login extends Component {
     );
   }
 }
-export default Login;
+
+export default connect(null, { Create_Login_User_Action })(Login);

@@ -20,6 +20,10 @@ const initialState = {
 export default function userReducers(state = initialState, action) {
   switch (action.type) {
     case Create_Login_User:
+      console.log("inside reducer", {
+        ...state,
+        ...action.payload,
+      });
       return {
         ...state,
         ...action.payload,

@@ -7,19 +7,19 @@ import {
 import axios from "axios";
 
 export const Create_Login_User_Action = ({ userName, password }) => {
-  return (dispatch, getState) => {
-    console.log(getState());
-    axios
-      .post(`http://localhost:3000`, {
+  return async (dispatch, getState) => {
+    console.log("current state is", getState());
+    await axios
+      .post(`http://localhost:3000/authenticate`, {
         userName,
         password,
       })
       .then((res) => {
-        console.log(res);
+        console.log("retrieved data-actionCreator", res.data);
         dispatch({
           type: Create_Login_User,
           payload: {
-            ...res,
+            ...res.data,
           },
         });
       })
