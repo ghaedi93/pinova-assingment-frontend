@@ -1,6 +1,5 @@
 import React from "react";
 import Login from "./components/login-registration";
-// import { BrowserRouter, Route, Switch } from "react-router-dom";
 import UserInformation from "./components/userInformation";
 import Terms from "./components/termsAndConditions";
 import Welcome from "./components/welcome";
