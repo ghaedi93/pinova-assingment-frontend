@@ -31,7 +31,7 @@ class UserInformation extends Component {
         <form onSubmit={this.handleSubmit} className="p-3">
           <div className="form-row">
             <div className="form-group col-md-8">
-              <label for="email">Email</label>
+              <label>Email</label>
               <input
                 defaultValue={this.props.email}
                 type="email"
@@ -42,16 +42,15 @@ class UserInformation extends Component {
           </div>
 
           <div className="form-row">
-            <div className="form-group col-md-3">
-              <label for="inputState">phoneNumber :</label>
+            <div className="form-group col-md-3 col-s-5">
+              <label>phoneNumber :</label>
               <select defaultValue={this.props.countryCode} id="countryCode">
                 <option value="1">USA (+1)</option>
                 <option value="98">Iran (+98)</option>
                 <option value="49">Germany (+49(</option>
               </select>
             </div>
-            <div className="form-group col-md-3">
-              {/* <label for="phoneNumber">phoneNumber</label> */}
+            <div className="form-group col-md-3 col-s-5">
               <input
                 type="text"
                 className="form-control"
@@ -69,7 +68,7 @@ class UserInformation extends Component {
                 id="acceptMarketing"
                 defaultChecked={this.props.acceptMarketing}
               />
-              <label className="form-check-label" for="gridCheck">
+              <label className="form-check-label">
                 I agree to recieve marketing emails
               </label>
             </div>

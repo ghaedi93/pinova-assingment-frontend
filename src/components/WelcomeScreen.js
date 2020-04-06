@@ -7,16 +7,16 @@ class Welcome extends Component {
       <div>
         <button
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           onClick={this.props.Logout_Action}
         >
           Logout
         </button>
         <div className="row">
           <div className="col-5 mx-auto">
-            <h1 class="display-4">Hello,{this.props.userName}!</h1>
-            <p class="lead">its greet to see you around!</p>
-            <hr class="my-4" />
+            <h1 className="display-4">Hello,{this.props.userName}!</h1>
+            <p className="lead">its greet to see you around!</p>
+            <hr className="my-4" />
             <p>your account balance is {this.props.balance}</p>
           </div>
         </div>

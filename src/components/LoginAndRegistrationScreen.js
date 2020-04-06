@@ -13,30 +13,37 @@ class Login extends Component {
   };
   render() {
     return (
-      <div className="row">
-        <form onSubmit={this.handleSubmit} className="col-4 mx-auto p-2">
-          <div className="form-group">
-            <label for="exampleInputEmail1">username</label>
-            <input
-              defaultValue={this.props.userName}
-              className="form-control"
-              id="userName"
-              aria-describedby="emailHelp"
-            />
-          </div>
-          <div className="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input
-              defaultValue={this.props.password}
-              type="password"
-              className="form-control"
-              id="password"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </form>
+      <div className="container">
+        <div className="row">
+          <form
+            onSubmit={this.handleSubmit}
+            className="col-5 col-s-12 mx-auto p-5"
+          >
+            <div className="form-group">
+              <label>username</label>
+              <input
+                placeholder="Enter userName"
+                defaultValue={this.props.userName}
+                className="form-control"
+                id="userName"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                placeholder="Enter Password"
+                defaultValue={this.props.password}
+                type="password"
+                className="form-control"
+                id="password"
+              />
+            </div>
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     );
   }
