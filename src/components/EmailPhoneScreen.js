@@ -28,29 +28,55 @@ class UserInformation extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor="title">email</label>
-          <input type="text" id="email" defaultValue={this.props.email} />
-          <label htmlFor="title">countryCode</label>
-          <input
-            type="text"
-            id="countryCode"
-            defaultValue={this.props.countryCode}
-          />
+        <form onSubmit={this.handleSubmit} className="p-3">
+          <div className="form-row">
+            <div className="form-group col-md-8">
+              <label for="email">Email</label>
+              <input
+                defaultValue={this.props.email}
+                type="email"
+                className="form-control"
+                id="email"
+              />
+            </div>
+          </div>
 
-          <label htmlFor="title">phoneNumber</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            defaultValue={this.props.phoneNumber}
-          />
-          <p>do you agree to getting ads ?</p>
-          <input
-            type="checkbox"
-            id="acceptMarketing"
-            defaultChecked={this.props.acceptMarketing}
-          />
-          <button type="submit">continue</button>
+          <div className="form-row">
+            <div className="form-group col-md-3">
+              <label for="inputState">phoneNumber :</label>
+              <select defaultValue={this.props.countryCode} id="countryCode">
+                <option value="1">USA (+1)</option>
+                <option value="98">Iran (+98)</option>
+                <option value="49">Germany (+49(</option>
+              </select>
+            </div>
+            <div className="form-group col-md-3">
+              {/* <label for="phoneNumber">phoneNumber</label> */}
+              <input
+                type="text"
+                className="form-control"
+                id="phoneNumber"
+                defaultValue={this.props.phoneNumber}
+              />
+            </div>
+          </div>
+
+          <div className="form-group">
+            <div className="form-check">
+              <input
+                className="form-check-input"
+                type="checkbox"
+                id="acceptMarketing"
+                defaultChecked={this.props.acceptMarketing}
+              />
+              <label className="form-check-label" for="gridCheck">
+                I agree to recieve marketing emails
+              </label>
+            </div>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Continue
+          </button>
         </form>
       </div>
     );
