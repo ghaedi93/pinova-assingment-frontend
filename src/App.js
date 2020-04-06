@@ -1,8 +1,8 @@
 import React from "react";
-import Login from "./components/login-registration";
-import UserInformation from "./components/userInformation";
-import Terms from "./components/termsAndConditions";
-import Welcome from "./components/welcome";
+import LoginAndRegistrationScreen from "./components/LoginAndRegistrationScreen";
+import EmailPhoneScreen from "./components/EmailPhoneScreen";
+import TermsAndCondition from "./components/TermsAndCondition";
+import WelcomeScreen from "./components/WelcomeScreen";
 import { connect } from "react-redux";
 
 function App(props) {
@@ -12,10 +12,10 @@ function App(props) {
         {console.log(props)}
         {props.showEmailPhoneScreen ||
           props.showTermsAndCondition ||
-          props.showWelcomeScreen || <Login />}
-        {props.showEmailPhoneScreen && <UserInformation />}
-        {props.showTermsAndCondition && <Terms />}
-        {props.showWelcomeScreen && <Welcome />}
+          props.showWelcomeScreen || <LoginAndRegistrationScreen />}
+        {props.showEmailPhoneScreen && <EmailPhoneScreen />}
+        {props.showTermsAndCondition && <TermsAndCondition />}
+        {props.showWelcomeScreen && <WelcomeScreen />}
       </main>
     </div>
   );
