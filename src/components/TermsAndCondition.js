@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
 import { Update_User_Action } from "../actions/User_Actions";
+import { Link } from "react-router-dom";
 
 class Terms extends Component {
   countiue = () => {
@@ -17,13 +17,11 @@ class Terms extends Component {
   };
   render() {
     return (
-      // <div>
-      //   <p>terms and conditions are this and that i hope you are agreed</p>
-      //   <button onClick={this.countiue}>continue</button>
-      // </div>
-      <div className="container-fluid">
+      <div className="container">
+        <Link to="/EmailPhoneScreen">Back</Link>
+        <br />
         <div className="row">
-          <div className="col-6">
+          <div className="col-m-6">
             <h1 className="entry-title">Terms and Conditions</h1>
             <p>
               <span>

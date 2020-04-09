@@ -1,22 +1,25 @@
 import { Create_Login_User, Update_User, Logout } from "./types";
 import axios from "axios";
+import history from "../history";
+import { checkStatus } from "../lib";
+import serverUrl from "../config";
 
 export const Create_Login_User_Action = ({ userName, password }) => {
   return async (dispatch, getState) => {
-    console.log("current state is", getState());
+    console.log(`${serverUrl}/authenticate`);
     await axios
-      .post(`http://localhost:3000/authenticate`, {
+      .post(`${serverUrl}/authenticate`, {
         userName,
         password,
       })
       .then((res) => {
-        console.log("retrieved data-actionCreator", res.data);
         dispatch({
           type: Create_Login_User,
           payload: {
             ...res.data,
           },
         });
+        history.push(checkStatus(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -27,21 +30,19 @@ export const Create_Login_User_Action = ({ userName, password }) => {
 export const Update_User_Action = (inputs) => {
   return async (dispatch, getState) => {
     const previousState = getState();
-    console.log("Previous state", { ...previousState });
-    console.log("inputs", { ...inputs });
     await axios
-      .put(`http://localhost:3000/user`, {
+      .put(`${serverUrl}/updateUser`, {
         ...previousState,
         ...inputs,
       })
       .then((res) => {
-        console.log("retrieved data-actionCreator", res.data);
         dispatch({
           type: Update_User,
           payload: {
             ...res.data,
           },
         });
+        history.push(checkStatus(res.data));
       })
       .catch((err) => {
         console.log(err);
@@ -53,5 +54,6 @@ export const Logout_Action = () => {
     dispatch({
       type: Logout,
     });
+    history.push("/");
   };
 };

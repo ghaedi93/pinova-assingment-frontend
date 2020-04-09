@@ -15,10 +15,7 @@ class Login extends Component {
     return (
       <div className="container">
         <div className="row">
-          <form
-            onSubmit={this.handleSubmit}
-            className="col-5 col-s-12 mx-auto p-5"
-          >
+          <form onSubmit={this.handleSubmit} className="col-s-12 mx-auto p-5">
             <div className="form-group">
               <label>username</label>
               <input

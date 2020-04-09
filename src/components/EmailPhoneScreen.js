@@ -9,12 +9,6 @@ class UserInformation extends Component {
     const countryCode = document.getElementById("countryCode").value;
     const phoneNumber = document.getElementById("phoneNumber").value;
     const acceptMarketing = document.getElementById("acceptMarketing").checked;
-    console.log("is sending", {
-      email,
-      countryCode,
-      phoneNumber,
-      acceptMarketing,
-    });
     this.props.Update_User_Action({
       email,
       countryCode,
@@ -27,13 +21,14 @@ class UserInformation extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="container">
         <form onSubmit={this.handleSubmit} className="p-3">
           <div className="form-row">
             <div className="form-group col-md-8">
               <label>Email</label>
               <input
                 defaultValue={this.props.email}
+                placeholder="Enter your email"
                 type="email"
                 className="form-control"
                 id="email"
@@ -42,16 +37,17 @@ class UserInformation extends Component {
           </div>
 
           <div className="form-row">
-            <div className="form-group col-md-3 col-s-5">
+            <div className="form-group">
               <label>phoneNumber :</label>
               <select defaultValue={this.props.countryCode} id="countryCode">
                 <option value="1">USA (+1)</option>
                 <option value="98">Iran (+98)</option>
-                <option value="49">Germany (+49(</option>
+                <option value="49">Germany (+49)</option>
               </select>
             </div>
             <div className="form-group col-md-3 col-s-5">
               <input
+                placeholder="Enter your phone number"
                 type="text"
                 className="form-control"
                 id="phoneNumber"
